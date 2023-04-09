@@ -215,3 +215,115 @@
   border-bottom: 1px solid #191919;
   margin-bottom: 1rem;
 }
+
+.blueText {
+  color: #7cb3d7;
+}
+
+.txnSection {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.txnTitle {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #191919;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.txnTitle > th {
+  width: 9rem;
+  text-align: center;
+}
+
+.txn {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #191919;
+}
+
+.txn > td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9rem;
+  height: 3rem;
+  text-align: center;
+}
+
+.transfer {
+  font-size: 0.8rem;
+  width: 8rem;
+  background-color: #151515;
+  padding: 0.35rem 1.2rem;
+  border: 1px solid #2c2c2c;
+  border-radius: 0.3rem;
+}
+
+.inTxn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: #161f1d;
+  color: #479f87;
+  border: 1px solid #223f37;
+  border-radius: 0.3rem;
+}
+
+.outTxn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: #2d2615;
+  color: #96792a;
+  border: 1px solid #4c3f1e;
+  border-radius: 0.3rem;
+}
+
+.heroSectionContainer {
+  width: 100%;
+  margin-top: -2.5rem;
+  padding-bottom: 5rem;
+}
+
+.latestResults_header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #111111;
+  height: 11rem;
+  margin: 0 11.5rem;
+  border: 1px solid #222222;
+  border-radius: 1rem;
+  box-shadow: 0rem 0 1.5rem #ffffff09;
+}
+
+.latestResults_header > section {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-evenly;
+  width: 100%;
+  color: #cccccc;
+  letter-spacing: 0.01rem;
+  padding: 0.5rem 1rem;
+  border-right: 1px solid #222222;
+}
+
+.latestResults_box {
+  display: flex;
+  align-items: center;
+  width: 15rem;
+  height: 5rem;
+  padding-left: 2rem;
+}

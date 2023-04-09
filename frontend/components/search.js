@@ -3,6 +3,7 @@ import styles from "/styles/Home.module.css";
 import { Bean, Beans } from "@web3uikit/icons";
 import { Illustration } from "@web3uikit/core";
 import { useState } from "react";
+import Searchresults from "./searchResult";
 
 export default function Search() {
   const [showResult, setShowResult] = useState(false);
@@ -19,6 +20,7 @@ export default function Search() {
     const response = await axios.get("http://localhost:5000/address", {
       params: { address: searchInput },
     });
+    console.log("response", response);
 
     setResult(response.data.result);
     setShowResult(true);
@@ -41,7 +43,7 @@ export default function Search() {
               onChange={changeHandler}
             />
             <button className={styles.btn} onClick={handleSearch}>
-              <svg 
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -55,8 +57,26 @@ export default function Search() {
               </svg>
             </button>
           </section>
+          <section className={styles.sponsored}>
+            Sponsored:{""}
+            <span>
+              500 Daily Moralis Beans for free
+              <span className={styles.claim}>Claim Them Now!</span>
+            </span>
+          </section>
+        </section>
+        <section className={styles.adSection}>
+          <p className={styles.adtext}>
+            500 Free <br />
+            Moralis Beans
+          </p>
+          <section>
+            <Beans fontSize={"50px"} className={styles.float} />
+            <Illustration logo="wizard" className={styles.wizard} />
+          </section>
         </section>
       </section>
+      {showResult && <SearchResults result={{result, searchInput}}/>}
     </section>
   );
 }
