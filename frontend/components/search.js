@@ -3,7 +3,7 @@ import styles from "/styles/Home.module.css";
 import { Bean, Beans } from "@web3uikit/icons";
 import { Illustration } from "@web3uikit/core";
 import { useState } from "react";
-import Searchresults from "./searchResult";
+import SearchResults from "./searchResult";
 
 export default function Search() {
   const [showResult, setShowResult] = useState(false);
@@ -20,9 +20,11 @@ export default function Search() {
     const response = await axios.get("http://localhost:5000/address", {
       params: { address: searchInput },
     });
-    console.log("response", response);
+    console.log("response", response); 
+    console.log("Result",response.data.result)
 
     setResult(response.data.result);
+    
     setShowResult(true);
   };
 
@@ -59,10 +61,11 @@ export default function Search() {
           </section>
           <section className={styles.sponsored}>
             Sponsored:{""}
-            <span>
+            <span className={styles.bean}>
+              <Bean fontSize="20px" />
+            </span>{" "}
               500 Daily Moralis Beans for free
               <span className={styles.claim}>Claim Them Now!</span>
-            </span>
           </section>
         </section>
         <section className={styles.adSection}>
@@ -76,7 +79,8 @@ export default function Search() {
           </section>
         </section>
       </section>
-      {showResult && <SearchResults result={{result, searchInput}}/>}
+      
+      {showResult && <SearchResults result={{result,searchInput}}/>}
     </section>
   );
 }

@@ -80,7 +80,7 @@ app.get("/address", async (req, res) => {
     // const address = "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
     const chain = "0x1";
     // console.log(` I am query${query}`)
-    console.log(query);
+    // console.log(query);
 
     const response =
       await Moralis.EvmApi.transaction.getWalletTransactionsVerbose({

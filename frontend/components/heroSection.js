@@ -1,7 +1,7 @@
 import Image from "next/image";
 import axios from "axios";
 import moment from "moment";
-import styles from "./styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 
 import {
   faCube,
@@ -13,23 +13,24 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-// import Chart from "../public/assets/chart.png";
-export default function HeroSecction() {
+import Chart from "../public/assets/chart.png";
+export default function HeroSection() {
   const [showResult, setShowResult] = useState(true);
   const [blockResult, setBlockResult] = useState([]);
   const [transactionsResult, setTransactionsResult] = useState([]);
   const [ethPrice, setEthPrice] = useState("");
-  const [totalTransactons, setTotalTransaction] = useState("");
+  const [totalTransactions, setTotalTransaction] = useState("");
   const [latestBlock, setLatestBlock] = useState("");
 
   useEffect(() => {
     const getethPrice = async () => {
-      const response = await axios.get("http://localhost:5000/getethprice", {});
+      const response = await axios.get("http://localhost:5000/getetherprice", {});
       setEthPrice(response.data.usdPrice);
     };
 
     const getBlockInfo = async () => {
       const response = await axios.get("http://localhost:5000/blockinfo", {});
+      console.log("response",response)
       const blockArray = [
         response.data.previousBlockInfo[1],
         response.data.previousBlockInfo[2],
@@ -39,8 +40,12 @@ export default function HeroSecction() {
       ];
 
       const transactions = [response.data.previousBlockInfo[0].transactions];
-      setTotalTransaction(response.data.previousBlockInfo[1].totalTransactons);
-      setLatestBlock(blockArray);
+      console.log("transactions",transactions)
+      const total=response.data.previousBlockInfo[1].totalTransactions;
+      setTotalTransaction(total);
+
+      setLatestBlock(response.data.latestBlock);
+      setBlockResult(blockArray);
       setTransactionsResult(response.data.previousBlockInfo[0].transactions);
     };
 
@@ -95,9 +100,158 @@ export default function HeroSecction() {
                   </svg>
                 </section>
                 <section className={styles.hero_box}>
-                    
+                  <p>ETHER PRICE</p>
+                  <p className={styles.heroValues}>
+                    ${Number(ethPrice).toFixed(2)}
+                  </p>
                 </section>
               </section>
+              <span className={styles.divider}></span>
+              <section className={styles.latestResults_box}>
+                <section className={styles.svgSection}>
+                  <FontAwesomeIcon icon={faGlobe} className={styles.svgIcons} />
+                </section>
+                <section className={styles.hero_box}>
+                  <p>MARKET CAP</p>
+                  <p className={styles.heroValues}>$230,888,751,724.00</p>
+                </section>
+              </section>
+            </section>
+            <section>
+              <section className={styles.latestResults_box}>
+                <section className={styles.svgSection}>
+                  <FontAwesomeIcon
+                    icon={faServer}
+                    className={styles.svgIcons}
+                  />
+                </section>
+                <section className={styles.hero_box}>
+                  <p>TRANSACTIONS</p>
+                  <p className={styles.heroValues}>{totalTransactions}</p>
+                </section>
+              </section>
+              <span className={styles.divider}></span>
+              <section className={styles.latestResults_box}>
+                <section className={styles.svgSection}>
+                  <FontAwesomeIcon icon={faGauge} className={styles.svgIcons} />
+                </section>
+                <section className={styles.hero_box}>
+                  <p>LAST FINALIZED BLOCK</p>
+                  <p className={styles.heroValues}>{latestBlock}</p>
+                </section>
+              </section>
+            </section>
+            <section>
+              <section className={styles.hero_averageValue}>
+                <p>Average Transaction Value</p>
+                <Image src={Chart} alt="Chart" className={styles.chart} />
+              </section>
+            </section>
+          </section>
+          <section className={styles.latestResults_body}>
+            <section>
+              <section className={styles.latestResults_body_title}>
+                Latest Blocks
+              </section>
+              <table className={styles.latestResults_body_table}>
+                <tbody>
+                  {blockResult.map((block) => {
+                    return (
+                      <tr
+                        className={`${styles.latestResults_body_tr} ${
+                          blockResult.indexOf(block) ==
+                            blockResult.length - 1 && styles.lastTd
+                        }`}
+                        key={block.blockNumber}
+                      >
+                        <td className={styles.tdIcon}>
+                          <FontAwesomeIcon icon={faCube} />
+                        </td>
+                        <td className={styles.tdBlock}>
+                          <section className={styles.blueText}>
+                            {block.blockNumber}
+                          </section>
+                          <section>
+                            {moment(block.time, "YYYYMMDD").fromNow()}
+                          </section>
+                        </td>
+                        <td className={styles.tdTxns}>
+                          <section>
+                            Fee Recipient{" "}
+                            <span className={styles.blueText}>
+                              {block.miner.slice(0, 6)}...
+                              {block.miner.slice(36)}
+                            </span>
+                          </section>
+                          <section>
+                            <span className={styles.blueText}>
+                              {block.totalTransactions} txns
+                            </span>
+                          </section>
+                        </td>
+                        <td className={styles.tdValue}>{block.gasUsed} Eth</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <section className={styles.latestResults_body_title}>
+                Latest Transactions
+              </section>
+              <table className={styles.latestResults_body_table}>
+                <tbody>
+                  {transactionsResult.map((txn) => {
+                    return (
+                      <tr
+                        className={`${styles.latestResults_body_tr} ${
+                          transactionsResult.indexOf(txn) ==
+                            transactionsResult.length - 1 && styles.lastTd
+                        }`}
+                        key={txn.transactionHash}
+                      >
+                        <td className={styles.tdContract}>
+                          <FontAwesomeIcon
+                            icon={faFileContract}
+                            className={styles.tdContract}
+                          />
+                        </td>
+                        <td className={styles.tdBlock}>
+                          <section className={styles.blueText}>
+                            {txn.transactionHash?.slice(0, 14)}...
+                          </section>
+                          <section>
+                            {moment(txn.time, "YYYYMMDD").fromNow()}
+                          </section>
+                        </td>
+                        <td className={styles.tdFromTo}>
+                          <section>
+                            From{" "}
+                            <span className={styles.blueText}>
+                              {txn.fromAddress?.slice(0, 6)}...
+                              {txn.fromAddress?.slice(36)}
+                            </span>
+                          </section>
+                          <section>
+                            To{" "}
+                            <span className={styles.blueText}>
+                              {txn.toAddress?.slice(0, 6)}...
+                              {txn.toAddress?.slice(36)}
+                            </span>
+                            <span className={styles.blueText}>
+                              {txn.totalTransactions}
+                            </span>
+                          </section>
+                        </td>
+                        <td className={styles.tdValue}>
+                          {(Number(txn.value) / 10 ** 18).toFixed(4)} Eth
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </section>
           </section>
         </section>

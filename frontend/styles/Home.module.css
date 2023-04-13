@@ -35,7 +35,6 @@
   width: 9rem;
   height: auto;
 }
-
 .menu {
   display: flex;
   align-items: center;
@@ -326,4 +325,131 @@
   width: 15rem;
   height: 5rem;
   padding-left: 2rem;
+}
+
+.hero_averageValue {
+  width: 100%;
+  height: 100%;
+}
+
+.hero_averageValue > p {
+  padding: 0.2rem;
+}
+
+.chart {
+  margin-top:1rem;
+  padding-top: 0.2rem;
+  width: 100%;
+  height: 90%;
+}
+
+.divider {
+  border-bottom: 1px solid #222222;
+  width: 100%;
+}
+
+.svgSection {
+  text-align: center;
+  width: 2.2rem;
+}
+
+.svgEth {
+  width: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+.svgIcons {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+.heroValues {
+  color: #ffffff;
+}
+
+.latestResults_body {
+  display: flex;
+  justify-content: space-between;
+  width: 79%;
+  margin: 1rem auto;
+}
+
+.latestResults_body > section {
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  width: 49.5%;
+  height: 100%;
+  /* padding: 1rem 0; */
+  border: 1px solid #222222;
+  border-radius: 1rem;
+  box-shadow: 0rem 0 1.5rem #ffffff09;
+}
+
+.latestResults_body_title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  padding: 1.2rem;
+  border-bottom: 1px solid #222222;
+}
+
+.latestResults_body_table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cccccc;
+  /* padding: 0 1rem; */
+}
+
+.latestResults_body_table > tbody {
+  width: 95%;
+}
+
+.latestResults_body_tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222222;
+  width: 100%;
+  height: 5rem;
+  padding: 0 1rem;
+  /* background-color: red; */
+}
+
+.lastTd {
+  border: none;
+}
+
+.tdIcon {
+  width: 2rem;
+}
+
+.tdContract {
+  width: 1.3rem;
+}
+
+.tdBlock {
+  width: 11rem;
+  padding-left: 0.5rem;
+}
+
+.tdTxns {
+  width: 16rem;
+}
+
+.tdValue {
+  width: 7rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: #151515;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #2c2c2c;
+  border-radius: 0.3rem;
+}
+
+.tdFromTo {
+  width: 16rem;
 }
