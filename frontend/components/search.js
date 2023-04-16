@@ -59,20 +59,21 @@ export default function Search() {
               </svg>
             </button>
           </section>
-          <section className={styles.sponsored}>
+          {/* <section className={styles.sponsored}>
             Sponsored:{""}
             <span className={styles.bean}>
               <Bean fontSize="20px" />
             </span>{" "}
               500 Daily Moralis Beans for free
               <span className={styles.claim}>Claim Them Now!</span>
-          </section>
+          </section> */}
         </section>
         <section className={styles.adSection}>
-          <p className={styles.adtext}>
+          {/* <p className={styles.adtext}>
             500 Free <br />
             Moralis Beans
-          </p>
+          </p> */}
+          <Illustration logo="wizard" className={styles.wizard} />
           <section>
             <Beans fontSize={"50px"} className={styles.float} />
             <Illustration logo="wizard" className={styles.wizard} />

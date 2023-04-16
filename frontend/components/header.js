@@ -2,7 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import styles from "/styles/Home.module.css";
 
-import Logo from "../public/assets/logo2.png";
+import Logo from "../public/assets/logo1.png";
 import { useEffect, useState } from "react";
 
 export default function Header() {
