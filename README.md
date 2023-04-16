@@ -1,10 +1,9 @@
 # Etherscan-Clone - The Ethereum Blockchain Explorer
 
 ## Screenshorts
-![etherscan1](https://github.com/abhi1506manu/Etherscan-Clone/blob/main/images/etherscan1.png?raw=true)
+![etherscan1](https://user-images.githubusercontent.com/69383256/232290186-7d20c19d-1777-430d-aad1-ea0eba184c5f.png)
 
-![ethrscan2](https://github.com/abhi1506manu/Etherscan-Clone/blob/main/images/etherscan2.png?raw=true)
-
+![etherscan2](https://user-images.githubusercontent.com/69383256/232290192-cd3b2992-1367-4051-ab95-d058b4172ca0.png)
 
 ## Quickstart
 
